@@ -1,0 +1,257 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background-color: #1C2628;
+  color: #FEFAE0;
+  overflow-x: hidden;
+}
+
+/* Fondo partículas */
+#particles-js {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  opacity: 0.8;
+}
+
+/* ===== HEADER ===== */
+.character-header {
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 30, 30, 0.4);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.character-header .back-btn {
+  position: absolute;
+  left: 1rem;
+  background: none;
+  border: none;
+  color: #e0e5fe;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.character-header .back-btn:hover {
+  transform: translateX(-3px);
+}
+
+.character-header .character-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* ===== HERO MEJORADO ===== */
+.character-hero {
+  position: relative;
+  width: 100%;
+  height: 85vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  background: linear-gradient(to bottom, rgba(82, 105, 97, 0.4), transparent);
+  padding: 2rem 1rem;
+}
+
+
+.hero-overlay {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 16 / 9; /* mantiene proporción */
+  background: radial-gradient(circle at center, #5b7269 0%, #2e3b35 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Fondo de color base con efecto sutil */
+.hero-background {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+
+/* Imagen PNG centrada */
+.character-main-img {
+  position: relative;
+  z-index: 2;
+  width: 80%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+  transition: transform 4s ease;
+}
+
+.character-hero:hover .character-main-img {
+  transform: scale(1.04);
+}
+
+.hero-text {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  color: #FEFAE0;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+/* ===== SECCIONES PRINCIPALES ===== */
+.character-main {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 6rem 8%;
+  gap: 3rem;
+}
+
+.character-model {
+  flex: 1;
+  position: sticky;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 70vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene {
+  width: 100%;
+  height: 100%;
+}
+
+.character-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.scroll-section {
+  background: rgba(254, 250, 224, 0.08);
+  padding: 3rem;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s ease, background 0.4s ease;
+}
+
+.scroll-section:hover {
+  transform: translateY(-5px);
+  background: rgba(254, 250, 224, 0.12);
+}
+
+.scroll-section img {
+  width: 100%;
+  border-radius: 10px;
+  margin-top: 1rem;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* SECCIÓN FINAL */
+.section-final {
+  /*si el color de fondo es el mismo */
+ /* background: linear-gradient(to top, #121A1C, #1C2628);*/
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.section-final h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+}
+
+.model-container {
+  width: 60%;
+  max-width: 500px;
+  aspect-ratio: 1 / 1;
+  /*el mismo color de fondo para los modelos al final
+  background: #1C2628;*/
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 3rem auto 0 auto;
+  /* para el mismo color de borde para todos los modelos 
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.scene-final {
+  width: 100%;
+  height: 500px;
+}
+
+/* Animaciones suaves */
+.scroll-section {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .character-main {
+    flex-direction: column;
+    padding: 4rem 5%;
+  }
+  .character-model {
+    position: relative;
+    top: 0;
+    transform: none;
+    height: 50vh;
+  }
+
+  .hero-overlay {
+    width: 90%;
+    aspect-ratio: 4 / 3;
+  }
+
+  .character-main-img {
+    width: 85%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .character-header .character-title {
+    font-size: 1.4rem;
+  }
+  .hero-overlay {
+    width: 95%;
+    aspect-ratio: 1 / 1;
+  }
+
+  .character-main-img {
+    width: 90%;
+  }
+
+  .hero-text {
+    font-size: 1rem;
+  }
+  
+  .scene-final { height: 350px; }
+}

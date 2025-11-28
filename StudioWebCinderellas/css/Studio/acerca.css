@@ -1,0 +1,227 @@
+/* ===== FONDO GENERAL ===== */
+body.page-acerca {
+  background: linear-gradient(180deg, #f6d25f 100%);
+  background-attachment: fixed;
+  font-family: 'Poppins', sans-serif;
+  color: #111;
+}
+
+/* ===== BANNER PRINCIPAL (idéntico a proyectos) ===== */
+.hero-section {
+  margin-top: var(--header-h);
+  width: 100%;
+  height: 50vh;
+  min-height: 320px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f6d25f;
+  padding: 20px 0;
+}
+
+.hero-container {
+  width: 70%;
+  max-width: 950px;
+  height: 50vh;
+  min-height: 280px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.hero-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  background-color: #1c1a28; /* igual al fondo de proyectos */
+}
+
+.hero-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% { left: -100%; }
+  60% { left: 100%; }
+  100% { left: 100%; }
+}
+
+/* ===== SECCIÓN ABOUT ===== */
+.about-section {
+  background-color: #f6d25f;
+  padding: 60px 20px 100px 20px;
+  text-align: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.about-intro {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  background: rgba(255,255,255,0.5);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+.about-intro h2 {
+  font-size: 2.2rem;
+  color: #111;
+  margin-bottom: 15px;
+}
+
+.about-intro p {
+  font-size: 1.1rem;
+  color: #222;
+  line-height: 1.6;
+}
+
+.about-cards {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.about-card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.7), rgba(255,255,255,0.3));
+  border-radius: 16px;
+  padding: 30px;
+  width: 300px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+}
+
+.about-card h3 {
+  font-size: 1.5rem;
+  color: #e53935;
+  margin-bottom: 15px;
+}
+
+.about-card p {
+  font-size: 1rem;
+  color: #111;
+  line-height: 1.5;
+}
+
+
+/* ===== LOGOS ===== */
+.logos-container {
+  margin: 60px auto;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.logos-container img {
+  height: 130px;
+  width: auto;
+  transition: transform 0.3s ease;
+}
+
+.logos-container img:hover {
+  transform: scale(1.1);
+}
+
+/* ===== EQUIPO ===== */
+.team-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-top: 60px;
+  padding: 20px;
+}
+
+.team-member {
+  background: linear-gradient(180deg, rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  width: 240px;
+  text-align: center;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+  padding: 30px 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team-member:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.25);
+}
+
+/* Imagen de cada integrante */
+.team-member img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain; 
+  border-radius: 14px;
+  background-color: #fff;
+  margin-bottom: 15px;
+  padding: 8px;
+}
+
+/* Nombre del integrante */
+.team-member h4 {
+  margin: 10px 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* ICONOS DE REDES */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;              
+  margin-top: 10px;
+}
+
+.social-icons a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;        /* tamaño nuevo */
+  height: 40px;       /* tamaño nuevo */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  background: none;
+  border: none;
+}
+
+.social-icons a:hover {
+  transform: scale(1.1);
+  opacity: 0.8;           
+}
+
+.social-icons img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: none;       
+  border: none;           
+  filter: none;           
+}
+

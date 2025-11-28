@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Gallus - Enemigo</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/model3D.css">
+  <link rel="stylesheet" href="../../../css/Featherbound/Enemigos/Gallus.css">
+</head>
+
+<body class="character-gallus">
+
+  <div id="particles-js"></div>
+
+  <main class="character-page">
+    <div class="character-container">
+
+      <header class="character-header">
+        <button onclick="volverFeatherbound('enemigos')" class="back-btn">← Volver</button>
+        <h1 class="character-title">Gallus</h1>
+      </header>
+
+
+      <section class="character-hero">
+        <div class="hero-overlay">
+          <div class="hero-background"></div>
+          <img src="../../../assets/imgEnemigos/Gallus/Gallus.png" alt="Imagen principal de Gallus" class="character-main-img">
+        </div>
+        <div class="hero-text">
+          <!--  <h2>“El guardián del bosque perdido”</h2>
+          <p>Una sombra lo arrebató todo, pero aún queda esperanza entre las hojas.</p>-->
+        </div>
+      </section>
+
+      <section class="character-main">
+        
+        <div class="character-model">
+          <div class="scene" id="scene-gallus"></div>
+        </div>
+
+        
+        <div class="character-info">
+          <div class="scroll-section section-description">
+            <h2>Descripción</h2>
+            <p>
+              Hubo un tiempo en el que Gallus era un líder entre las aves, un gallo orgulloso que dominaba con su fuerte canto y presencia imponente. Sin embargo, mientras los demás pájaros vivían en armonía, él ansiaba algo más: poder absoluto.
+Gallus despreciaba la libertad con la que las aves menores volaban. Veía el mundo como un caos sin orden ni liderazgo fuerte. “Las aves desperdician su existencia en cantos inútiles y vuelos sin propósito”, pensaba.
+Un día, en su obsesión por la supremacía, se adentra en lo más profundo del bosque encantado, donde encontró un antiguo altar prohibido. Allí, una fuerza oscura le susurró promesas de poder. A cambio de su alma y su corazón, la oscuridad le concedió control sobre las sombras y la capacidad de dominar a todas las aves.
+Gallus aceptó sin dudar. Con su nuevo poder, selló el cielo en penumbras, capturó a todas las aves y las encerró en jaulas encantadas, asegurándose de que nadie volviera a volar sin su permiso. Para él, no se trataba solo de venganza, sino de orden y control absoluto.
+Pero un ave escapó… Pickle.
+El pequeño cuervo representa todo lo que Gallus odia: la libertad, la voluntad de desafiar el destino y el deseo de volar sin ataduras. Sabe que Pickle viene a desafiar su reinado… y hará todo lo posible por destruirlo
+
+            </p>
+          </div>
+
+          <div class="scroll-section section-modelsheet">
+            <h2>Model Sheet</h2>
+            <p>Diseño base del personaje usado como guía de modelado y animación.</p>
+            <img src="../../../assets/imgEnemigos/Gallus/ModelSheet.jpg" alt="Model Sheet de Gallus">
+          </div>
+
+          <div class="scroll-section section-concept">
+            <h2>Concept Art</h2>
+            <p>Visualización del estilo artístico inicial y expresividad del personaje.</p>
+            <img src="../../../assets/imgEnemigos/Gallus/Gallus.png" alt="Concept Art de Gallus" class="concept-img-gallus">
+          </div>
+        </div>
+      </section>
+
+     
+      <section class="section-final">
+        <h2>Explora el modelo en 3D</h2>
+        <p>Usa el mouse para rotarlo y hacer zoom.</p>
+        <div class="model-container">
+          <div class="scene scene-final" id="scene-gallus-final"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+ 
+  <script>
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+    initCharacterScene("scene-gallus", "../../../assets/Modelado/Gallus/GallusAnimacion.glb", {
+      characterName: "gallus",
+      scale: 0.6,
+      cameraZ: 3.8,
+      y: -1.5,
+      x: 0,
+      scrollAnimated: true,
+
+      ambientIntensity: 2.1,   
+      directionalIntensity: 2.1,
+      rimIntensity: 2.1
+    });
+
+    initCharacterScene("scene-gallus-final", "../../../assets/Modelado/Gallus/GallusA.glb", {
+      characterName: "gallus",
+      scale: 0.6,
+      cameraZ: 4,
+      y: -1,
+      interactive: true,
+
+      ambientIntensity: 2.1,
+      directionalIntensity: 2.1,
+      rimIntensity: 2.1
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".gallus-model", {
+      y: () => {
+        const lastSection = document.querySelector(".section-concept");
+        return lastSection.offsetHeight * 0.6; 
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".gallus-info",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    
+  
+    particlesJS("particles-js", {
+      "particles": {
+        "number": { "value": 10, "density": { "enable": true, "value_area": 800 } },
+        "shape": {
+          "type": "image",
+          "image": { "src": "../../../assets/texturas/jaula1.png", "width": 64, "height": 64 }
+        },
+        "opacity": { "value": 0.9, "random": true },
+        "size": { "value": 30, "random": true },
+        "line_linked": { "enable": false },
+        "move": {
+          "enable": true,
+          "speed": 0.3,
+          "direction": "bottom",
+          "random": true,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        },
+        "rotate": { "enable": true, "direction": "random", "speed": 5 }
+      },
+      "interactivity": {
+        "events": { "onhover": { "enable": false }, "onclick": { "enable": false }, "resize": true }
+      },
+      "retina_detect": true
+    });
+    
+  </script>
+</body>
+</html>

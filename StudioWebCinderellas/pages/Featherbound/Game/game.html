@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game - Featherbound</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/Game/game.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  
+  <canvas id="particles-canvas"></canvas>
+
+  
+  <header class="character-header">
+    <button class="back-btn" onclick="window.location.href='../featherbound.html'">←</button>
+    <h1 class="character-title">Game</h1>
+  </header>
+
+  
+  <section class="hero-section">
+    <div class="hero-container">
+      
+      <img src="../../../assets/Logos/Juego/Featherboun.PNG" class="hero-logo" alt="Featherbound">
+
+    </div>
+  </section>
+
+  
+  <main class="game-main">
+
+    
+    <section class="game-info">
+
+      <div class="game-card">
+        <img src="../../../assets/Logos/Juego/PortadaGame.jpg" class="pickle-img">
+
+        <div class="game-data">
+          <h2>Género:</h2><p>Aventura</p>
+          <h2>Estilo Artístico:</h2><p>Naturalismo Fantástico</p>
+          <h2>Clasificación:</h2><p>Mayores de 7 años</p>
+          <h2>Inspiración:</h2><p>Ori and the Blind Forest, Cuphead, Zelda BOTW</p>
+
+          <button class="btn-descargar">DESCARGAR</button>
+        </div>
+      </div>
+
+      <p class="game-description">
+        Este juego de aventura y plataformas en 3D pone al jugador en el papel de Pickle, un valiente cuervo que viaja por un mundo mágico para rescatar a sus amigos, atrapados en jaulas encantadas por una fuerza oscura. Enfrentando entornos peligrosos, deberá usar su agilidad para superar obstáculos, y enfrentar la amenaza que los mantiene cautivos. Con un estilo envolvente y una música inmersiva, combina exploración, precisión y una narrativa emotiva para una experiencia desafiante y memorable.
+      </p>
+
+    </section>
+
+    
+    <section class="story-box">
+      <h2>Backstory</h2>
+      <p>
+        En lo más profundo del Bosque Encantado, un cuervo vivía en armonía junto a sus amigos, una comunidad de aves que compartían el cielo y los árboles como su hogar. Sus cantos llenaban el aire, y la brisa nocturna los acunaba entre las ramas. Pero una noche, todo cambió.
+Una presencia oscura descendió sobre el bosque, envolviéndolo en una energía desconocida. Uno a uno, los pájaros fueron capturados y encerrados en jaulas misteriosas, ocultas en los rincones más recónditos del bosque. Cuando el cuervo despertó, se encontró completamente solo. El vibrante canto de su hogar había sido reemplazado por un inquietante silencio.
+El bosque, antes familiar y acogedor, se sentía extraño, como si algo profundo y antiguo lo estuviera observando. Con sus amigos desaparecidos y la amenaza aún latente, el cuervo emprendió su viaje a través del bosque, decidido a encontrarlos.res llaves ocultas necesarias para liberar a sus amigos atrapados en una jaula.
+      </p>
+    </section>
+
+    
+    <section class="story-box">
+      <h2>Lore</h2>
+      <p>
+        Una sombra desconocida ha invadido el bosque , corrompiendo la paz de todos los mundos.
+En un ataque repentino, una fuerza oscura ha capturado a los amigos del cuervo Pikle, encerrándolos en jaulas flotantes que orbitan sobre tierras peligrosas.
+Ahora, Pikle debe alzar el vuelo y embarcarse en una misión de rescate a través de mundos cambiantes y llenos de desafíos. Cada nivel está plagado de trampas, enemigos hostiles y caminos ocultos que pondrán a prueba sus habilidades.
+Para liberar a sus amigos, Pikle deberá encontrar las Llaves Brillantes, reliquias antiguas esparcidas por todos los niveles. Sin ellas, las jaulas no podrán abrirse. Pero no será fácil: estructuras inestables, guardianes corruptos y obstáculos cada vez más complejos bloquearán su camino.
+Solo reuniendo todas las llaves y enfrentando al núcleo de la oscuridad, Pikle podrá restaurar el equilibrio... y traer de vuelta a sus amigos.
+      </p>
+
+    </section>
+
+    
+    <section class="game-footer">
+      <img src="../../../assets/Logos/Juego/PortadaGame.jpg">
+    </section>
+
+  </main>
+
+
+
+  <script>
+  const canvas = document.getElementById("particles-canvas");
+  const ctx = canvas.getContext("2d");
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  const particles = Array.from({ length: 65 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 2 + 1,
+    dx: (Math.random() - 0.5) * 0.3,
+    dy: (Math.random() - 0.5) * 0.3,
+    opacity: Math.random() * 0.3 + 0.1
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach(p => {
+      ctx.globalAlpha = p.opacity;
+      ctx.fillStyle = "#fff";
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+
+      p.x += p.dx;
+      p.y += p.dy;
+
+      if (p.x <= 0 || p.x >= canvas.width) p.dx *= -1;
+      if (p.y <= 0 || p.y >= canvas.height) p.dy *= -1;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+  </script>
+
+</body>
+</html>

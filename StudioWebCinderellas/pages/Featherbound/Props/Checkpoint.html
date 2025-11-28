@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkpoint</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/Props/Checkpoint.css">
+ 
+</head>
+
+<body>
+ 
+  <header class="props-header">
+    <button onclick="volverFeatherbound('props')" class="back-button">← Volver</button>
+    <h1>Checkpoint</h1>
+  </header>
+
+
+  <main class="props-main">
+    <section class="descripcion-card">
+      <h2>Descripción</h2>
+      <div class="descripcion-content">
+        <p>
+          Un arco de piedra antigua, marcado por la erosión y grietas iluminadas por un leve resplandor,
+          se alza entre las ruinas olvidadas. Actúa como punto de reinicio: al activarse, el cuervo reaparece allí tras ser derrotado.
+          Su activación se acompaña de un eco profundo y un suave zumbido.
+        </p>
+        <img src="../../../assets/imgProps/Checkpoint.png" alt="Checkpoint">
+      </div>
+    </section>
+
+    <section class="visualizacion-card">
+      <h2>Visualización en 3D</h2>
+      <p>Usa el mouse para rotarlo y hacer zoom.</p>
+
+      <div class="model-container">
+        <div class="scene scene-final" id="scene-checkpoint"></div>
+      </div>
+    </section>
+  </main>
+
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+ 
+  <script>
+   
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+    
+    initCharacterScene(
+      "scene-checkpoint",
+      "../../../assets/Modelado/Props/Checkpoint.glb", 
+      {
+        characterName: "checkpoint",
+        scale: 0,
+        cameraZ: 0,
+        y: -0.5,
+        interactive: true, 
+      }
+    );
+  </script>
+</body>
+</html>

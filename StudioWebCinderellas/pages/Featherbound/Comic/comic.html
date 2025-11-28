@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cómic Featherbound</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/Comic/comic.css">
+</head>
+
+<body>
+
+<canvas id="magicParticles"></canvas>
+
+<header class="comic-header">
+  <button class="back-button" onclick="window.location.href='../featherbound.html'">←</button>
+  <h1>CÓMIC</h1>
+</header>
+
+<main class="comic-main">
+
+  <!-- DESCRIPCIÓN -->
+  <section class="comic-descripcion">
+    <p><strong>Featherbound</strong> presenta un cómic oficial que cuenta el origen de Pickle, la caída de la oscuridad y los sucesos que conectan con el videojuego.</p>
+  </section>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <section class="comic-container">
+
+    <!-- BLOQUE 0 -->
+    <div class="block reveal">
+      <img class="comic-img big-center" src="../../../assets/Logos/Juego/Featherboun.PNG">
+    </div>
+
+    <!-- BLOQUE 1 -->
+    <p class="comic-text narrator reveal">Existía un reino donde solo las aves habitaban en armonía.</p>
+
+    <div class="row reveal">
+      <img class="comic-img small" src="../../../assets/ImgComic/1..png">
+      <img class="comic-img small" src="../../../assets/ImgComic/3..png">
+    </div>
+
+    <p class="comic-text narrator reveal">
+      Su líder, fuerte e imponente, guiaba con sabiduría a su comunidad.
+    </p>
+
+    <img class="comic-img mid-center reveal" src="../../../assets/ImgComic/2..png">
+
+    <!-- BLOQUE 2 -->
+    <p class="comic-text narrator reveal">
+      En el Bosque, un cuervo llamado Pickle vivía en armonía junto a sus amigos.
+    </p>
+
+    <div class="row reveal">
+      <img class="comic-img small" src="../../../assets/ImgComic/5..png">
+      <img class="comic-img small" src="../../../assets/ImgComic/4..png">
+    </div>
+
+    <!-- BLOQUE 3 -->
+    <p class="comic-text narrator reveal">Pero un día, todo cambió.</p>
+
+    <img class="comic-img mid-center reveal" src="../../../assets/ImgComic/6..png">
+    <img class="comic-img mid-center reveal" src="../../../assets/ImgComic/7..png">
+
+    <!-- BLOQUE 4 -->
+    <p class="comic-text narrator reveal">
+      Una presencia oscura envolvió al bosque en una energía desconocida.
+    </p>
+
+    <div class="row reveal">
+      <img class="comic-img small" src="../../../assets/ImgComic/8..png">
+      <img class="comic-img small" src="../../../assets/ImgComic/9..png">
+      <img class="comic-img small" src="../../../assets/ImgComic/10..png">
+    </div>
+
+    <!-- BLOQUE 5 -->
+    <p class="comic-text narrator reveal">
+      Pasado un instante Pickle despierta solo, confundido…
+    </p>
+
+    <div class="row reveal">
+      <img class="comic-img small" src="../../../assets/ImgComic/11..png">
+      <img class="comic-img small" src="../../../assets/ImgComic/12..png">
+    </div>
+
+    <p class="comic-text narrator reveal">
+      Con la ayuda de una de sus plumas logra escapar.
+    </p>
+
+    <div class="row reveal">
+      <img class="comic-img small" src="../../../assets/ImgComic/13..png">
+      <img class="comic-img small" src="../../../assets/ImgComic/14..png">
+    </div>
+
+    <!-- BLOQUE 6 -->
+    <img class="comic-img big-center reveal" src="../../../assets/ImgComic/15..png">
+
+    <p class="comic-text narrator reveal">
+      Pero algo estaba mal… Pickle no lograba volar.
+    </p>
+
+    <!-- BLOQUE 7 -->
+    <img class="comic-img mid-center reveal" src="../../../assets/ImgComic/16..png">
+
+    <div class="row reveal">
+      <img class="comic-img small" src="../../../assets/ImgComic/17..png">
+
+      <p class="comic-text narrator middle reveal">
+        El bosque ya no era el mismo.<br>
+        Con sus amigos desaparecidos comenzó su viaje hacia lo desconocido.
+      </p>
+
+      <img class="comic-img small" src="../../../assets/ImgComic/18..png">
+    </div>
+
+    <!-- BLOQUE FINAL -->
+    <img class="comic-img final-img reveal" src="../../../assets/Logos/Juego/Featherboun.PNG">
+
+  </section>
+
+</main>
+
+
+<!-- ======================================================
+     JS — PARTICULAS MAGICAS + REVEAL
+====================================================== -->
+<script>
+/* REVEAL */
+const reveals = document.querySelectorAll('.reveal');
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) e.target.classList.add("visible");
+  });
+}, { threshold: 0.15 });
+reveals.forEach(r => obs.observe(r));
+
+/* PARTICULAS */
+const canvas = document.getElementById("magicParticles");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+const particles = Array.from({ length: 60 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  r: Math.random() * 2 + 1,
+  dx: (Math.random() - 0.5) * 0.5,
+  dy: (Math.random() - 0.5) * 0.5
+}));
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "rgba(255,255,255,0.25)";
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+onresize = () => {
+  canvas.width = innerWidth;
+  canvas.height = innerHeight;
+};
+</script>
+
+</body>
+</html>

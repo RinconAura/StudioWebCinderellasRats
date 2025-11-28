@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Zipp - Personaje</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/model3D.css">
+  <link rel="stylesheet" href="../../../css/Featherbound/Personajes/Zipp.css">
+</head>
+
+<body class="character-zipp">
+
+  <div id="particles-js"></div>
+
+  <main class="character-page">
+    <div class="character-container"> 
+     
+      <header class="character-header">
+        <button onclick="volverFeatherbound('personajes')" class="back-btn">← Volver</button>
+        <h1 class="character-title">Zipp</h1>
+      </header>
+
+     
+      <section class="character-hero">
+        <div class="hero-overlay">
+          <div class="hero-background"></div>
+          <img src="../../../assets/imgPersonajes/Zipp/Zipp.png" alt="Imagen principal de Zipp" class="character-main-img">
+        </div>
+        <div class="hero-text">
+          <!--  <h2>“El guardián del bosque perdido”</h2>
+          <p>Una sombra lo arrebató todo, pero aún queda esperanza entre las hojas.</p>-->
+        </div>
+      </section>
+
+     
+      <section class="character-main">
+       
+        <div class="character-model">
+          <div class="scene" id="scene-zipp"></div>
+        </div>
+
+    
+        <div class="character-info">
+          <div class="scroll-section section-description">
+            <h2>Descripción</h2>
+            <p>
+              Zipp vivía entre los arbustos de flores al sur del bosque. 
+              Su trabajo consistía en polinizar las flores más exóticas. 
+              Era valorado por todas las aves por su capacidad para llevar 
+              mensajes rápidamente de un extremo a otro del bosque. 
+              Cada mañana visitaba a Pikle para contarle las novedades 
+              mientras compartían el rocío de las hojas. La noche de la invasión,
+              voló lo más rápido que pudo para alertar a sus amigos, pero fue atrapado.
+            </p>
+          </div>
+
+          <div class="scroll-section section-modelsheet">
+            <h2>Model Sheet</h2>
+            <p>Diseño base del personaje usado como guía de modelado y animación.</p>
+            <img src="../../../assets/imgPersonajes/Zipp/ModelSheet.jpg" alt="Model Sheet de Zipp">
+          </div>
+
+          <div class="scroll-section section-concept">
+            <h2>Concept Art</h2>
+            <p>Visualización del estilo artístico inicial y expresividad del personaje.</p>
+            <img src="../../../assets/imgPersonajes/Zipp/Zipp.png" alt="Concept Art de Zipp" class="concept-img-zipp">
+          </div>
+        </div>
+      </section>
+
+     
+      <section class="section-final">
+        <h2>Explora el modelo en 3D</h2>
+        <p>Usa el mouse para rotarlo y hacer zoom.</p>
+        <div class="model-container">
+          <div class="scene scene-final" id="scene-zipp-final"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+  
+  <script>
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+ 
+    initCharacterScene("scene-zipp", "../../../assets/Modelado/Zipp/Zipp.glb", {
+      characterName: "zipp",
+      scale: 0.8,
+      cameraZ: 0,
+      y: -2.2,
+      x: 0,
+      scrollAnimated: true,
+
+      ambientIntensity: 5.1,   
+      directionalIntensity: 5.1,
+      rimIntensity: 5.1
+    });
+
+
+    initCharacterScene("scene-zipp-final", "../../../assets/Modelado/Zipp/ZippEstatico.glb", {
+      characterName: "zipp",
+      scale: 0,
+      cameraZ: 4,
+      y: -1.5,
+      interactive: true,
+    });
+
+      
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".zipp-model", {
+      y: () => {
+        const lastSection = document.querySelector(".section-concept");
+        return lastSection.offsetHeight * 0.6; 
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".zipp-info",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    
+    particlesJS('particles-js', {
+    "particles": {
+      "number": {
+        "value": 80,
+        "density": {
+          "enable": true,
+          "value_area": 800
+        }
+      },
+      "color": {
+        "value": "#4CAF50" 
+      },
+      "shape": {
+        "type": "circle"
+      },
+      "opacity": {
+        "value": 0.7,
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 1,
+          "opacity_min": 0.1,
+          "sync": false
+        }
+      },
+      "size": {
+        "value": 3,
+        "random": true,
+        "anim": {
+          "enable": true,
+          "speed": 2,
+          "size_min": 1,
+          "sync": false
+        }
+      },
+      "line_linked": {
+        "enable": false
+      },
+      "move": {
+        "enable": true,
+        "speed": 0.5,
+        "direction": "top",
+        "random": true,
+        "straight": false,
+        "out_mode": "out",
+        "bounce": false
+      }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": {
+          "enable": false
+        },
+        "onclick": {
+          "enable": false
+        },
+        "resize": true
+      }
+    },
+    "retina_detect": true
+  });
+    
+  </script>
+</body>
+</html>

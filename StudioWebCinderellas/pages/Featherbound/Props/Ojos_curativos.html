@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ojo Curativo</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/Props/Checkpoint.css">
+ 
+</head>
+
+<body>
+ 
+  <header class="props-header">
+    <button onclick="volverFeatherbound('props')" class="back-button">← Volver</button>
+    <h1>Ojo Curativo</h1>
+  </header>
+
+
+  <main class="props-main">
+    <section class="descripcion-card">
+      <h2>Descripción</h2>
+      <div class="descripcion-content">
+        <p>
+          El ojo verde, envuelto en enredaderas y coronado por una flor,
+          combina un aspecto biológico y místico que evoca propiedades curativas. 
+          Suele encontrarse en zonas estratégicas o escondido entre la vegetación,
+          y al tocarlo libera energía regenerativa que restaura 10 PV al cuervo. 
+          Al consumirse, emite un sonido suave y reconfortante.
+        </p>
+        <img src="../../../assets/imgProps/Ojos.png" alt="ojo">
+      </div>
+    </section>
+
+  
+    <section class="visualizacion-card">
+      <h2>Visualización en 3D</h2>
+      <p>Usa el mouse para rotarlo y hacer zoom.</p>
+
+      <div class="model-container">
+        <div class="scene scene-final" id="scene-ojo"></div>
+      </div>
+    </section>
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+ 
+  <script>
+   
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+  
+    initCharacterScene(
+      "scene-ojo",
+      "../../../assets/Modelado/Props/Modelo_Ojo_Curativo.glb", 
+      {
+        characterName: "ojo",
+        scale: 0,
+        cameraZ: 0,
+        y: 0.4,
+        x:0,
+        interactive: true, 
+      }
+    );
+  </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Pickle - Personaje</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/model3D.css">
+  <link rel="stylesheet" href="../../../css/Featherbound/Personajes/Pickle.css">
+</head>
+
+<body class="character-pickle">
+
+ <div class="cloud-container">
+      <div class="cloud"></div>
+      <div class="cloud"></div>
+      <div class="cloud"></div>
+      <div class="cloud"></div>
+      <div class="cloud"></div>
+  </div>
+
+
+  <main class="character-page">
+    <div class="character-container">
+
+     
+      <header class="character-header">
+        <button onclick="volverFeatherbound('personajes')" class="back-btn">← Volver</button>
+        <h1 class="character-title">Pickle</h1>
+      </header>
+
+      
+      <section class="character-hero">
+        <div class="hero-overlay">
+          <div class="hero-background"></div>
+          <img src="../../../assets/imgPersonajes/Pickle/Pickle.png" alt="Imagen principal de Pickle" class="character-main-img">
+        </div>
+        <div class="hero-text">
+          <h2>“El guardián del bosque perdido”</h2>
+          <p>Una sombra lo arrebató todo, pero aún queda esperanza entre las hojas.</p>
+        </div>
+      </section>
+
+      
+      <section class="character-main">
+        
+        <div class="character-model">
+          <div class="scene" id="scene-pickle"></div>
+        </div>
+
+      
+        <div class="character-info">
+          <div class="scroll-section section-description">
+            <h2>Descripción</h2>
+            <p>
+              Pickle vivía en paz con sus amigos en el bosque hasta que una sombra oscura trajo consigo
+              extrañas criaturas que capturaron a todos en las ruinas flotantes. Solo él logró escapar.
+              Ahora, con su hogar sumido en un silencio inquietante y sin nadie más en quien apoyarse,
+              debe enfrentar la amenaza. Su misión es clara: rescatar a sus amigos y devolver la paz al bosque.
+            </p>
+          </div>
+
+          <div class="scroll-section section-modelsheet">
+            <h2>Model Sheet</h2>
+            <p>Diseño base del personaje usado como guía de modelado y animación.</p>
+            <img src="../../../assets/imgPersonajes/Pickle/ModelSheet.jpg" alt="Model Sheet de Pickle">
+          </div>
+
+          <div class="scroll-section section-concept">
+            <h2>Concept Art</h2>
+            <p>Visualización del estilo artístico inicial y expresividad del personaje.</p>
+            <img src="../../../assets/imgPersonajes/Pickle/Concept.png" alt="Concept Art de Pickle">
+          </div>
+        </div>
+      </section>
+
+    
+      <section class="section-final">
+        <h2>Explora el modelo en 3D</h2>
+        <p>Usa el mouse para rotarlo y hacer zoom.</p>
+        <div class="model-container">
+          <div class="scene scene-final" id="scene-pickle-final"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+  
+  <script>
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+    
+    initCharacterScene("scene-pickle", "../../../assets/Modelado/Pickle/PICKLE VOLAR.glb", {
+      characterName: "pickle",
+      scale: 0.8,
+      cameraZ: 3.8,
+      y: -0.9,
+      x: 0,
+      scrollAnimated: true,
+    });
+
+   
+    initCharacterScene("scene-pickle-final", "../../../assets/Modelado/Pickle/PICKLE web.glb", {
+      characterName: "pickle",
+      scale: 2,
+      cameraZ: 4,
+      y: -0.5,
+      interactive: true,
+    });
+
+        
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".pickle-model", {
+      y: () => {
+        const lastSection = document.querySelector(".section-concept");
+        return lastSection.offsetHeight * 0.6; 
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".pickle-info",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    
+
+
+  const cloudContainer = document.querySelector(".cloud-container");
+
+  for (let i = 0; i < 8; i++) {
+    const cloud = document.createElement("div");
+    cloud.classList.add("cloud");
+
+    cloud.style.setProperty("--scale", (0.4 + Math.random() * 1.2).toFixed(2));
+    cloud.style.setProperty("--duration", (25 + Math.random() * 25) + "s");
+    cloud.style.setProperty("--startY", Math.random() * 80 + "vh");
+    cloud.style.setProperty("--endY", (Math.random() * 80 - 40) + "vh");
+
+    cloud.style.top = Math.random() * 80 + "vh";
+    cloud.style.left = Math.random() * -200 - 200 + "px";
+
+    cloudContainer.appendChild(cloud);
+  }
+  
+  </script>
+
+</body>
+</html>

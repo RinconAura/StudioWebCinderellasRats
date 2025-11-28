@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Robert - Personaje</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/model3D.css">
+  <link rel="stylesheet" href="../../../css/Featherbound/Personajes/Robert.css">
+</head>
+
+<body class="character-robert">
+<div class="leaf-container">
+  <div class="leaf" style="left: 10%; animation-duration: 7s;"><div class="leaf-inner"></div></div>
+  <div class="leaf" style="left: 25%; animation-duration: 9s;"><div class="leaf-inner"></div></div>
+  <div class="leaf" style="left: 40%; animation-duration: 6s;"><div class="leaf-inner"></div></div>
+  <div class="leaf" style="left: 55%; animation-duration: 8s;"><div class="leaf-inner"></div></div>
+  <div class="leaf" style="left: 70%; animation-duration: 10s;"><div class="leaf-inner"></div></div>
+  <div class="leaf" style="left: 85%; animation-duration: 7.5s;"><div class="leaf-inner"></div></div>
+</div>
+
+  <main class="character-page">
+    <div class="character-container">
+
+   
+      <header class="character-header">
+        <button onclick="volverFeatherbound('personajes')" class="back-btn">← Volver</button>
+        <h1 class="character-title">Robert</h1>
+      </header>
+
+      
+      <section class="character-hero">
+        <div class="hero-overlay">
+          <div class="hero-background"></div>
+          <img src="../../../assets/imgPersonajes/Robert/Robert.png" alt="Imagen principal de Robert" class="character-main-img">
+        </div>
+        <div class="hero-text">
+          <!--  <h2>“El guardián del bosque perdido”</h2>
+          <p>Una sombra lo arrebató todo, pero aún queda esperanza entre las hojas.</p>-->
+        </div>
+      </section>
+
+      
+      <section class="character-main">
+       
+        <div class="character-model">
+          <div class="scene" id="scene-robert"></div>
+        </div>
+
+        
+        <div class="character-info">
+          <div class="scroll-section section-description">
+            <h2>Descripción</h2>
+            <p>
+              Robert vivía en el bosque, donde desarrolló habilidades excepcionales de orientación y observación.
+              Se convirtió en un experto navegante, conociendo cada rincón y sendero entre los árboles.
+              Cuando la oscuridad cayó, estaba entregando un mensaje importante entre las colonias de aves.
+            </p>
+          </div>
+
+          <div class="scroll-section section-modelsheet">
+            <h2>Model Sheet</h2>
+            <p>Diseño base del personaje usado como guía de modelado y animación.</p>
+            <img src="../../../assets/imgPersonajes/Robert/ModelSheet.jpg" alt="Model Sheet de Robert">
+          </div>
+
+          <div class="scroll-section section-concept">
+            <h2>Concept Art</h2>
+            <p>Visualización del estilo artístico inicial y expresividad del personaje.</p>
+            <img src="../../../assets/imgPersonajes/Robert/Robert.png" alt="Concept Art de Robert" class="Concept-img-Robert">
+          </div>
+        </div>
+      </section>
+
+     
+      <section class="section-final">
+        <h2>Explora el modelo en 3D</h2>
+        <p>Usa el mouse para rotarlo y hacer zoom.</p>
+        <div class="model-container">
+          <div class="scene scene-final" id="scene-robert-final"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+ 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+  
+  <script>
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+    
+    initCharacterScene("scene-robert", "../../../assets/Modelado/Robert/Robert.glb", {
+      characterName: "robert",
+      scale: 0.6,
+      cameraZ: 3.8,
+      y: -1.7,
+      x: 0,
+      scrollAnimated: true,
+    });
+
+    
+    initCharacterScene("scene-robert-final", "../../../assets/Modelado/Robert/RobertEstatico.glb", {
+      characterName: "robert",
+      scale: 0,
+      cameraZ: 0,
+      y: -1.5,
+      interactive: true,
+    });
+
+        
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".robert-model", {
+      y: () => {
+        const lastSection = document.querySelector(".section-concept");
+        return lastSection.offsetHeight * 0.6; 
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".robert-info",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    
+
+  </script>
+</body>
+</html>

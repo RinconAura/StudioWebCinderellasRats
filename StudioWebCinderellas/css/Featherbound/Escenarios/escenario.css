@@ -1,0 +1,214 @@
+:root {
+  --color-fondo: #1b2a20;
+  --color-panel: #223328;
+  --color-texto: #f4f4f4;
+}
+
+/* ===== GENERAL ===== */
+body {
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  transition: background 0.4s ease;
+}
+
+/* ===== HEADER estilo Pickle ===== */
+.encabezado {
+  width: 100%;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 30, 30, 0.4);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.btn-volver {
+  position: absolute;
+  left: 1rem;
+  background: none;
+  border: 1px solid var(--color-texto);
+  color: var(--color-texto);
+  font-size: 1rem;
+  padding: 0.4rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateX(-2px);
+}
+
+.encabezado h1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--color-texto);
+  margin: 0;
+  letter-spacing: 1px;
+}
+
+/* ===== CONTENEDORES PRINCIPALES ===== */
+.container-principal {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.descripcion,
+.lore-back {
+  border-radius: 10px;
+  margin: 2rem;
+  padding: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background 0.4s ease;
+}
+
+.descripcion h2,
+.lore-back h2 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  font-family: "Cinzel", serif;
+}
+
+.descripcion p,
+.lore p,
+.backstory p {
+  max-height: 250px;
+  overflow-y: auto;
+  padding-right: 8px;
+  text-align: justify;
+  line-height: 1.6;
+  white-space: pre-line;
+  scrollbar-width: thin;
+  scrollbar-color: #4b6a53 #223328;
+}
+
+.descripcion p::-webkit-scrollbar,
+.lore p::-webkit-scrollbar,
+.backstory p::-webkit-scrollbar {
+  width: 6px;
+}
+
+.descripcion p::-webkit-scrollbar-thumb,
+.lore p::-webkit-scrollbar-thumb,
+.backstory p::-webkit-scrollbar-thumb {
+  background-color: #4b6a53;
+  border-radius: 3px;
+}
+
+/* ===== NUEVAS IMÁGENES EXTRA ===== */
+.imagenes-extra {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.imagen-item {
+  background: rgba(34, 51, 40, 0.7);
+  border-radius: 12px;
+  padding: 0.8rem;
+  text-align: center;
+  width: 45%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.imagen-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.6);
+}
+
+.imagen-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.imagen-item img:hover {
+  transform: scale(1.03);
+}
+
+.imagen-item p {
+  margin-top: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  color: var(--color-texto);
+}
+
+/* ===== LORE Y BACKSTORY ===== */
+.lore-back {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.lore, .backstory {
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: inset 0 0 8px rgba(0,0,0,0.3);
+  transition: background 0.4s ease;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .lore-back {
+    grid-template-columns: 1fr;
+  }
+
+  .imagenes-extra {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imagen-item {
+    width: 90%;
+  }
+}
+
+/* ===== TEMAS POR ESCENARIO ===== */
+body.ruinas {
+  --color-fondo: #1C2628;
+  --color-panel: #FEFAE0;
+}
+body.ruinas .descripcion { background: #386641; }
+body.ruinas .lore { background: #386641; }
+body.ruinas .backstory { background: #386641; }
+
+body.fallout {
+  --color-fondo: #386641;
+  --color-panel: #FEFAE0;
+}
+body.fallout .descripcion { background: #1C2628; }
+body.fallout .lore { background: #1C2628; }
+body.fallout .backstory { background: #1C2628; }
+
+body.bosque {
+  --color-fondo: #98B8BB;
+  --color-panel: #FEFAE0;
+}
+body.bosque .descripcion { background: #1C2628; }
+body.bosque .lore { background: #1C2628; }
+body.bosque .backstory { background: #1C2628; }
+
+body.altar {
+  --color-fondo: #1C2628;
+  --color-panel: #FEFAE0;
+}
+body.altar .descripcion { background: #98B8BB; }
+body.altar .lore { background: #98B8BB; }
+body.altar .backstory { background: #98B8BB; }

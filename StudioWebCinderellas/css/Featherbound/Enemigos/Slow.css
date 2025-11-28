@@ -1,0 +1,37 @@
+body.character-slow {
+  background: linear-gradient(to bottom, #98B8BB, #304046); 
+  color: #FEFAE0;
+}
+
+/* Personalización de secciones */
+.section-description,
+.section-modelsheet,
+.section-concept {
+  background:  #1C2628;
+  border-left: 4px solid #FEFAE0;
+}
+.concept-img-slow{
+  background:#4E6662 ;
+}
+
+/* fondo Sección final */
+.section-final {
+  background: radial-gradient(circle at top, #26312E, #121A1C);
+}
+/*color de borde para el content de la img general*/
+.hero-overlay {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+/*color borde de la img*/
+.character-main-img {
+  filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+}
+/*color defondo detras de la img*/
+.hero-background {
+  background: radial-gradient(circle at center, #4E6662 0%, #2e3b35 100%);
+}
+/*fondo y borde del modelo al final*/
+.model-container {
+  background: #1C2628;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}

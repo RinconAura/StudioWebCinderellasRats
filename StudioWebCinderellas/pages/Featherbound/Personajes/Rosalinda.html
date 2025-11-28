@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Rosalinda - Personaje</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/model3D.css">
+  <link rel="stylesheet" href="../../../css/Featherbound/Personajes/Rosalinda.css">
+</head>
+
+<body class="character-rosalinda">
+
+  <div id="particles-js"></div>
+
+  <main class="character-page">
+    <div class="character-container">
+
+  
+      <header class="character-header">
+        <button onclick="volverFeatherbound('personajes')" class="back-btn">← Volver</button>
+        <h1 class="character-title">Rosalinda</h1>
+      </header>
+
+
+  
+      <section class="character-hero">
+        <div class="hero-overlay">
+          <div class="hero-background"></div>
+          <img src="../../../assets/imgPersonajes/Rosalinda/Rosalinda.png" alt="Imagen principal de Rosalinda" class="character-main-img">
+        </div>
+        <div class="hero-text">
+        <!--  <h2>“El guardián del bosque perdido”</h2>
+          <p>Una sombra lo arrebató todo, pero aún queda esperanza entre las hojas.</p>-->
+        </div>
+      </section>
+
+     
+      <section class="character-main">
+  
+        <div class="character-model">
+          <div class="scene" id="scene-rosalinda"></div>
+        </div>
+
+     
+        <div class="character-info">
+          <div class="scroll-section section-description">
+            <h2>Descripción</h2>
+            <p>
+              Rosalinda habitaba en la laguna cristalina al este del Bosque Encantado.
+              Desde su llegada, se dedicó a mantener el equilibrio del ecosistema acuático,
+              filtrando el agua y ayudando a que permaneciera limpia. Compartía su espacio 
+              con pequeños peces y ranas, creando una comunidad diversa y armoniosa.
+              Durante la invasión de la oscuridad, intentó advertir a las demás aves, 
+              pero fue una de las primeras en ser capturada.
+            </p>
+          </div>
+
+          <div class="scroll-section section-modelsheet">
+            <h2>Model Sheet</h2>
+            <p>Diseño base del personaje usado como guía de modelado y animación.</p>
+            <img src="../../../assets/imgPersonajes/Rosalinda/ModelSheet.jpg" alt="Model Sheet de Rosalinda">
+          </div>
+
+          <div class="scroll-section section-concept">
+            <h2>Concept Art</h2>
+            <p>Visualización del estilo artístico inicial y expresividad del personaje.</p>
+            <img src="../../../assets/imgPersonajes/Rosalinda/Rosalinda.png" alt="Concept Art de Rosalinda"class="concept-img-rosalinda">
+          </div>
+        </div>
+      </section>
+
+      
+      <section class="section-final">
+        <h2>Explora el modelo en 3D</h2>
+        <p>Usa el mouse para rotarlo y hacer zoom.</p>
+        <div   class="model-container">
+          <div class="scene scene-final" id="scene-rosalinda-final"></div>
+        </div>
+        
+      </section>
+
+    </div>
+  </main>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+  
+  <script>
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+ 
+  
+  initCharacterScene(
+    "scene-rosalinda",
+    "../../../assets/Modelado/Flamenco/Rosalinda_Animación.glb",
+    {
+      characterName: "rosalinda",
+      scale: 0.5,
+      cameraZ: 3.8,
+      y: -0.4,
+      x: 0,
+      scrollAnimated: true,
+    }
+  );
+
+  
+  initCharacterScene(
+    "scene-rosalinda-final",
+    "../../../assets/Modelado/Flamenco/Rosalinda_modelo.glb",
+    {
+      characterName: "rosalinda",
+      scale: 0.6,
+      cameraZ: 4,
+      y: -0.2,
+      interactive: true,
+    }
+  );
+
+    
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".rosalinda-model", {
+      y: () => {
+        const lastSection = document.querySelector(".section-concept");
+        return lastSection.offsetHeight * 0.6; 
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".rosalinda-info",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+
+
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+    
+    initCharacterScene("scene-rosalinda", "../../../assets/Modelado/Flamenco/Rosalinda_Animación.glb", {
+      characterName: "rosalinda",
+      scale: 0.5,
+      cameraZ: 5,
+      y: -0.8,
+      x: 0,
+      scrollAnimated: true
+    });
+
+    initCharacterScene("scene-rosalinda-final", "../../../assets/Modelado/Flamenco/Rosalinda_modelo.glb", {
+      characterName: "rosalinda",
+      scale: 0.6,
+      cameraZ: 4,
+      y: -0.2,
+      interactive: true
+    });
+
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(".rosalinda-model", {
+      y: () => {
+        const lastSection = document.querySelector(".section-concept");
+        return lastSection.offsetHeight * 0.6;
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".rosalinda-info",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+
+particlesJS("particles-js", {
+  "particles": {
+    "number": {
+      "value": 45,
+      "density": {
+        "enable": true,
+        "value_area": 900
+      }
+    },
+    "color": {
+      "value": ["#F2C9D5", "#F9E7ED", "#FFFFFF"] 
+    },
+    "shape": {
+      "type": "circle"
+    },
+    "opacity": {
+      "value": 0.35,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 0.6,
+        "opacity_min": 0.15,
+        "sync": false
+      }
+    },
+    "size": {
+      "value": 18,
+      "random": true,
+      "anim": {
+        "enable": true,
+        "speed": 4,
+        "size_min": 8,
+        "sync": false
+      }
+    },
+    "line_linked": {
+      "enable": false 
+    },
+    "move": {
+      "enable": true,
+      "speed": 0.8,
+      "direction": "top",
+      "random": true,
+      "straight": false,
+      "out_mode": "out",
+      "bounce": false
+    }
+  },
+  "interactivity": {
+    "detect_on": "canvas",
+    "events": {
+      "onhover": { "enable": false },
+      "onclick": { "enable": false },
+      "resize": true
+    }
+  },
+  "retina_detect": true
+});
+
+  </script>
+</body>
+</html>

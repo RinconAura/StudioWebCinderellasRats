@@ -1,0 +1,51 @@
+body.character-zipp {
+  background: linear-gradient(to bottom, #3B5A40, #1E2F1B);
+  color: #FEFAE0;
+}
+
+.section-description,
+.section-modelsheet,
+.section-concept  {
+  background: #1C2628;
+  border-left: 4px solid #FEFAE0;
+}
+.concept-img-zipp{
+  background: #C8B8D0;
+}
+
+
+
+.section-final {
+  background: radial-gradient(circle at top, #1C2628, #121A1C);
+}
+
+.hero-overlay {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+.character-main-img {
+  filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+}
+
+.hero-background {
+  background: radial-gradient(circle at center,#C8B8D0 0%, #2e3b35 100%);
+}
+
+.model-container {
+  background:#C8B8D0;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; 
+  pointer-events: none; 
+}
+.character-page {
+  position: relative;
+  z-index: 1; 
+}

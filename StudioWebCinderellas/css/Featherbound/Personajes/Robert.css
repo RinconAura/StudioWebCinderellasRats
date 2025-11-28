@@ -1,0 +1,77 @@
+body.character-robert {
+  background: linear-gradient(to bottom,  #526961,#386641);
+  color: #FEFAE0;
+}
+main.character-page {
+  position: relative;
+  z-index: 2; /* contenido encima de las hojas */
+}
+
+/* Personalización de secciones */
+.section-description,
+.section-modelsheet,
+.section-concept {
+  background:  #1C2628;
+  border-left: 4px solid #FEFAE0;
+}
+
+/* fondo Sección final */
+.section-final {
+  background: radial-gradient(circle at top, #26312E, #121A1C);
+}
+/*color de borde para el content de la img general*/
+.hero-overlay {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+/*color borde de la img*/
+.character-main-img {
+  filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+}
+/*color defondo detras de la img*/
+.hero-background,
+.Concept-img-Robert {
+  background: radial-gradient(circle at center,#FEFAE0);
+}
+/*fondo y borde del modelo al final*/
+.model-container {
+  background: #1C2628;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+.leaf-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.leaf {
+  position: absolute;
+  top: -10vh;
+  animation: fall 8s linear infinite;
+}
+
+/* Hoja interna - movimiento lateral */
+.leaf-inner {
+  width: 25px;
+  height: 20px;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  border-radius: 50% 0 50% 0;
+  opacity: 0.9;
+
+  filter: drop-shadow(0 3px 4px rgba(0,0,0,0.4));
+  animation: sway 3s ease-in-out infinite alternate;
+}
+
+
+/* Caída */
+@keyframes fall {
+  0% { transform: translateY(-10vh); }
+  100% { transform: translateY(110vh); }
+}
+
+/* Movimiento lateral */
+@keyframes sway {
+  0% { transform: translateX(-20px) rotate(-10deg); }
+  100% { transform: translateX(20px) rotate(10deg); }
+}

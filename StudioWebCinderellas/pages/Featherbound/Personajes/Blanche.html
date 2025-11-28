@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Blanche - Personaje</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/model3D.css">
+  <link rel="stylesheet" href="../../../css/Featherbound/Personajes/Blanche.css">
+</head>
+
+<body class="character-blanche">
+ 
+  <div class="seed-container">
+  <div class="seed" style="left: 10%; animation-duration: 8s;"><div class="seed-inner"></div></div>
+  <div class="seed" style="left: 22%; animation-duration: 10s;"><div class="seed-inner"></div></div>
+  <div class="seed" style="left: 35%; animation-duration: 7s;"><div class="seed-inner"></div></div>
+  <div class="seed" style="left: 50%; animation-duration: 9s;"><div class="seed-inner"></div></div>
+  <div class="seed" style="left: 65%; animation-duration: 11s;"><div class="seed-inner"></div></div>
+  <div class="seed" style="left: 80%; animation-duration: 8.5s;"><div class="seed-inner"></div></div>
+</div>
+
+  <main class="character-page">
+    <div class="character-container">
+
+     
+      <header class="character-header">
+        <button onclick="volverFeatherbound('personajes')" class="back-btn">← Volver</button>
+        <h1 class="character-title">Blanche</h1>
+      </header>
+
+     
+      <section class="character-hero">
+        <div class="hero-overlay">
+          <div class="hero-background"></div>
+          <img src="../../../assets/imgPersonajes/Blanche/Blanche.png" alt="Imagen principal de Blanche" class="character-main-img">
+        </div>
+        <div class="hero-text">
+          <!--  <h2>“El guardián del bosque perdido”</h2>
+          <p>Una sombra lo arrebató todo, pero aún queda esperanza entre las hojas.</p>-->
+        </div>
+      </section>
+
+      
+      <section class="character-main">
+       
+        <div class="character-model">
+          <div class="scene" id="scene-blanche"></div>
+        </div>
+
+       
+        <div class="character-info">
+          <div class="scroll-section section-description">
+            <h2>Descripción</h2>
+            <p>
+              Blanche residía en el del bosque, en un árbol hueco que había convertido en un acogedor hogar.
+              Su pasión era coleccionar y clasificar semillas de todas las plantas del bosque, creando un
+              banco natural de semillas que aseguraba la supervivencia de las especies vegetales. 
+              Cuando la oscuridad cayó sobre el bosque, estaba organizando su colección, y no tuvo tiempo de escapar
+            </p>
+          </div>
+
+          <div class="scroll-section section-modelsheet">
+            <h2>Model Sheet</h2>
+            <p>Diseño base del personaje usado como guía de modelado y animación.</p>
+            <img src="../../../assets/imgPersonajes/Blanche/ModelSheet.jpg" alt="Model Sheet de Blanche">
+          </div>
+
+          <div class="scroll-section section-concept">
+            <h2>Concept Art</h2>
+            <p>Visualización del estilo artístico inicial y expresividad del personaje.</p>
+            <img src="../../../assets/imgPersonajes/Blanche/Blanche.png" alt="Concept Art de Blanche" class="Concept-img-Blanche">
+          </div>
+        </div>
+      </section>
+
+      
+      <section class="section-final">
+        <h2>Explora el modelo en 3D</h2>
+        <p>Usa el mouse para rotarlo y hacer zoom.</p>
+        <div class="model-container">
+          <div class="scene scene-final" id="scene-blanche-final"></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+ 
+  <script>
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+   
+    initCharacterScene("scene-blanche", "../../../assets/Modelado/Blanche/Cacatua.glb", {
+      characterName: "blanche",
+      scale: 0.8,
+      cameraZ: 3.8,
+      y: -1.5,
+      x: 0,
+      scrollAnimated: true,
+
+      ambientIntensity: 0.3,
+      directionalIntensity: 0.6,
+      fillLightIntensity: 0.2
+    });
+
+ 
+    initCharacterScene("scene-blanche-final", "../../../assets/Modelado/Blanche/Cacatua.glb", {
+      characterName: "blanche",
+      scale: 1,
+      cameraZ: 4,
+      y: -1.5,
+      interactive: true,
+
+      ambientIntensity: 0.3,
+      directionalIntensity: 0.6,
+      fillLightIntensity: 0.2
+    });
+
+   
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.to(".blanche-model", {
+      y: () => {
+        const lastSection = document.querySelector(".section-concept");
+        return lastSection.offsetHeight * 0.6; 
+      },
+      ease: "none",
+      scrollTrigger: {
+        trigger: ".blanche-info",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: true,
+      },
+    });
+    
+  </script>
+</body>
+</html>

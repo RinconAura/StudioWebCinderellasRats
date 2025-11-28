@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Featherbound</title>
+
+
+  <link rel="stylesheet" href="/css/Featherbound/featherbound.css" />
+  <link rel="stylesheet" href="../../css/Featherbound/Personajes/personajes.css" />
+  <link rel="stylesheet" href="../../css/escenario.css" />
+</head>
+
+<body class="page-featherbound">
+ 
+  <div class="fb-background"></div>
+
+  
+<canvas id="magicParticles"></canvas>
+
+
+ 
+  <header class="fb-header">
+    <div class="fb-logo">
+      <a href="../../index.html">
+        <img src="../../assets/Logos/Studio/FondoAmarillo.png" alt="Logo CinderellasRats" />
+      </a>
+    </div>
+
+    <nav class="fb-nav">
+     
+      <a href="#" onclick="loadFBSection('Personajes/personajes')">PERSONAJES</a>
+      <a href="#" onclick="loadFBSection('Enemigos/enemigos')">ENEMIGOS</a>
+      <a href="#" onclick="loadFBSection('Escenarios/escenarios')">ESCENARIOS</a>
+      <a href="#" onclick="loadFBSection('Props/props')">PROPS</a>
+      <a href="#" onclick="loadFBSection('Comic/TarjetaComic')">COMIC</a>
+      <a href="#" onclick="loadFBSection('Game/TarjetaGame')">GAME</a>
+    </nav>
+  </header>
+
+  
+  <main id="fb-content" class="fb-content">
+    <img src="../../assets/Logos/Juego/Featherboun.PNG" alt="FeatherBound Logo Central" class="fb-overlay" />
+  </main>
+
+  
+  <footer class="fb-footer">
+    <div class="fb-footer-links">
+      <a href="../../index.html#proyectos">PROYECTOS</a>
+      <span>|</span>
+      <a href="../../index.html#acerca">ACERCA DE</a>
+      <span>|</span>
+      <a href="featherbound.html" class="active">FEATHERBOUND</a>
+    </div>
+
+    <p>@2025 CinderellasRats</p>
+
+    <div class="fb-social">
+      <i class="fab fa-tiktok"></i>
+      <i class="fab fa-instagram"></i>
+      <i class="fab fa-youtube"></i>
+    </div>
+  </footer>
+
+  <script src="../../js/featherbound.js"></script>
+  
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      const hash = window.location.hash.replace("#", "");
+
+      switch (hash) {
+        case "personajes":
+          loadFBSection("Personajes/personajes");
+          break;
+        case "enemigos":
+          loadFBSection("Enemigos/enemigos");
+          break;
+        case "escenarios":
+          loadFBSection("Escenarios/escenarios");
+          break;
+        case "props":
+          loadFBSection("Props/props");
+          break;
+        case "comic":
+          loadFBSection("Comic/comic");
+          break;
+        case "game":
+          loadFBSection("Game/game");
+          break;
+        default:
+          
+          break;
+      }
+    });
+  </script>
+<script>
+const canvas = document.getElementById("magicParticles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+const particles = Array.from({ length: 60 }, () => ({
+  x: Math.random() * canvas.width,
+  y: Math.random() * canvas.height,
+  r: Math.random() * 2 + 1,
+  dx: (Math.random() - 0.5) * 0.5,
+  dy: (Math.random() - 0.5) * 0.5
+}));
+
+function draw() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "rgba(255,255,255,0.3)";
+  particles.forEach(p => {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+    ctx.fill();
+    p.x += p.dx;
+    p.y += p.dy;
+    if (p.x < 0 || p.x > canvas.width) p.dx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.dy *= -1;
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+</script>
+
+
+
+</body>
+</html>
+

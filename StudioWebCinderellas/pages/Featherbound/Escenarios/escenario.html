@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Escenario</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/Escenarios/escenario.css" />
+</head>
+<body>
+  <main class="escenario">
+    <header class="encabezado">
+      <button class="btn-volver" onclick="volverFeatherbound('escenarios')">← Volver</button>
+      <h1 id="nombre-escenario"></h1>
+    </header>
+
+
+    <section class="container-principal">
+      <section class="descripcion">
+        <h2>Descripción</h2>
+        <p id="texto-descripcion"></p>
+
+      
+        <div class="imagenes-extra">
+          <div class="imagen-item">
+            <img id="imagen-concept" alt="Concept Art">
+            <p>Concept Art</p>
+          </div>
+          <div class="imagen-item">
+            <img id="imagen-nivel" alt="Diseño de Nivel">
+            <p>Diseño de Nivel</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="lore-back">
+        <div class="lore">
+          <h2>Lore</h2>
+          <p id="texto-lore"></p>
+        </div>
+        <div class="backstory">
+          <h2>Backstory</h2>
+          <p id="texto-backstory"></p>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="../../../js/escenario.js"></script>
+  <script>
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Llaves</title>
+  <link rel="stylesheet" href="../../../css/Featherbound/Props/Checkpoint.css">
+ 
+</head>
+
+<body>
+ 
+  <header class="props-header">
+    <button onclick="volverFeatherbound('props')" class="back-button">← Volver</button>
+    <h1>Llaves</h1>
+  </header>
+
+  
+  <main class="props-main">
+    <section class="descripcion-card">
+      <h2>Descripción</h2>
+      <div class="descripcion-content">
+        <p>
+          Las llaves doradas emiten un brillo pulsante con una estela luminosa y
+          aparecen en puntos estratégicos del nivel. Al recogerlas, producen un
+          tono místico y suave. Son esenciales para liberar a los amigos atrapados
+          y deben llevarse hasta el final.
+        </p>
+        <img src="../../../assets/imgProps/Llaves.png" alt="llaves">
+      </div>
+    </section>
+
+    
+    <section class="visualizacion-card">
+      <h2>Visualización en 3D</h2>
+      <p>Usa el mouse para rotarlo y hacer zoom.</p>
+
+      <div class="model-container">
+        <div class="scene scene-final" id="scene-llaves"></div>
+      </div>
+    </section>
+  </main>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r133/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.133.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="../../../js/model3D.js"></script>
+
+
+  <script>
+   
+    function volverFeatherbound(seccion) {
+      window.location.href = `../featherbound.html#${seccion}`;
+    }
+
+   
+    initCharacterScene(
+      "scene-llaves",
+      "../../../assets/Modelado/Props/LLave.glb", 
+      {
+        characterName: "llaves",
+        scale: 2,
+        cameraZ: 0,
+        y: -0.5,
+        interactive: true, 
+      }
+    );
+  </script>
+</body>
+</html>

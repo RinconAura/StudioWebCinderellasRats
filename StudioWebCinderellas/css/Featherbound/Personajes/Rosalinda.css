@@ -1,0 +1,59 @@
+body.character-rosalinda {
+  background: linear-gradient(
+    to bottom,
+    #98B8BB
+  );
+  color: #FEFAE0;
+}
+/* Fondo de partículas */
+#particles-js {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+
+/* Personalización de secciones */
+.section-description,
+.section-modelsheet,
+.section-concept {
+  background: linear-gradient(
+    to bottom,
+    #1C2628
+  );
+  border-left: 4px solid #F8C7DA; /* rosado suave */
+}
+
+
+.concept-img-rosalinda,
+.hero-background,
+.model-container {
+background: #B4D9B5;
+}
+
+/* fondo Sección final */
+.section-final {
+  background: radial-gradient(circle at top,    #1C2628);
+}
+/*color de borde para el content de la img general*/
+.hero-overlay {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+/*color borde de la img*/
+.character-main-img {
+  filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+}
+/*color defondo detras de la img*/
+.hero-background {
+  background: radial-gradient(circle at center,    #B5DFF0, #2e3b35 100%);
+}
+/*fondo y borde del modelo al final*/
+.model-container {
+  background: #B4D9B5;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+    main.character-page {
+      position: relative;
+      z-index: 1; /* contenido encima de partículas */
+    }

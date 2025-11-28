@@ -1,0 +1,50 @@
+body.character-pillacrash {
+  background: linear-gradient(to bottom, #1C2628);
+  color: #FEFAE0;
+}
+
+/* Personalización de secciones */
+.section-description,
+.section-modelsheet,
+.section-concept {
+  background: rgba(56, 102, 65, 0.85);
+  border-left: 4px solid #FEFAE0;
+}
+.Concept-img-pillacrash{
+  background: #663928;
+}
+/* fondo Sección final */
+.section-final {
+  background: radial-gradient(circle at top, #26312E, #121A1C);
+}
+/*color de borde para el content de la img general*/
+.hero-overlay {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+/*color borde de la img*/
+.character-main-img {
+  filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+}
+/*color defondo detras de la img*/
+.hero-background {
+  background: radial-gradient(circle at center, #663928 0%, #2e3b35 100%);
+}
+/*fondo y borde del modelo al final*/
+.model-container {
+  background: #1C2628;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* detrás del contenido */
+  pointer-events: none; /* no bloquea scroll ni clicks */
+}
+.character-page {
+  position: relative;
+  z-index: 1;
+}

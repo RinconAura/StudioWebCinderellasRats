@@ -1,0 +1,80 @@
+body.character-blanche {
+  background: linear-gradient(to bottom, #1C2628, #526961);
+  color: #FEFAE0;
+}
+
+/* Personalización de secciones */
+.section-description,
+.section-modelsheet,
+.section-concept{
+  background:#98B8BB;
+  border-left: 4px solid #FEFAE0;
+}
+.character-info h2,
+.character-info p {
+  color:#1C2628; 
+}
+
+.Concept-img-Blanche {
+  background: #9cd0dc;
+}
+
+/* fondo Sección final */
+.section-final {
+  background: radial-gradient(circle at top,  #9cd0dc, #121A1C);
+}
+/*color de borde para el content de la img general*/
+.hero-overlay {
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+/*color borde de la img*/
+.character-main-img {
+  filter: drop-shadow(0 5px 20px rgba(0, 0, 0, 0.5));
+}
+/*color defondo detras de la img*/
+.hero-background {
+  background: radial-gradient(circle at center,  #9cd0dc 0%, #2e3b35 100%);
+}
+/*fondo y borde del modelo al final*/
+.model-container {
+  background: #1C2628;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.seed-container {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+/* Contenedor externo: caída */
+.seed {
+  position: absolute;
+  top: -10vh;
+  animation: seedFall linear infinite;
+}
+
+/* Semilla interna: rotación y movimiento */
+.seed-inner {
+  width: 14px;
+  height: 20px;
+  background: radial-gradient(circle, #FFFEDA, #E5D239);
+  border-radius: 50% 50% 40% 40%;
+  opacity: 0.85;
+
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.25));
+  animation: seedFloat ease-in-out infinite alternate;
+}
+
+/* Caída suave */
+@keyframes seedFall {
+  0% { transform: translateY(-10vh) rotate(0deg); }
+  100% { transform: translateY(110vh) rotate(60deg); }
+}
+
+/* Flotación lateral */
+@keyframes seedFloat {
+  0% { transform: translateX(-15px) rotate(-10deg); }
+  100% { transform: translateX(15px) rotate(20deg); }
+}
